@@ -6,6 +6,14 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
   const newDepositValueString = depositAmount.value;
   const newDepositValue = parseFloat(newDepositValueString);
 
+  //   extra step to clear the value after submit the button
+  depositAmount.value = "";
+
+  if (isNaN(newDepositValue)) {
+    alert("Please input a valid number");
+    return;
+  }
+
   //   step-3: deposti total koto tuku ache seta ber korbo
   const depositTotalElement = document.getElementById("deposit-total");
   const previousDepositTotalString = depositTotalElement.innerText;
@@ -26,7 +34,4 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
 
   const currentTotalBalance = previousTotalBalance + newDepositValue;
   balanceTotalElement.innerText = currentTotalBalance;
-
-  //   extra step to clear the value after submit the button
-  depositAmount.value = "";
 });
